@@ -1,0 +1,76 @@
+/* src/pages/Home/Home.module.css */
+
+/* src/pages/Home/Home.module.css */
+
+.container {
+    display: flex;
+    justify-content: center; /* سنترة الصندوق أفقياً */
+    align-items: center;     /* سنترة الصندوق عمودياً */
+    min-height: 100vh;       /* جعل الخلفية الرمادية تغطي كامل ارتفاع الشاشة */
+    width: 100vw;            /* جعل الخلفية الرمادية تغطي كامل عرض الشاشة */
+    background-color: #f0f2f5; /* اللون الرمادي الفاتح */
+    margin: 0;
+    padding: 20px;           /* مسافة أمان صغيرة لضمان عدم التصاق البوكس بالحواف في الموبايل */
+    box-sizing: border-box;
+}
+
+.todoBox {
+    background: white;
+    width: 100%;
+    max-width: 600px;        /* عرض مناسب للصندوق في منتصف الصفحة */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* ظل خفيف لإبراز البوكس */
+}
+
+.title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* الكلاس المسؤول عن تقسيم الأجزاء بخطوط فاصلة */
+.section {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee; /* الخط الفاصل بين الفورم والفلتر والقائمة */
+}
+
+/* لإلغاء الخط الفاصل في آخر قسم */
+.listSection {
+    padding-top: 20px;
+}
+
+
+.filterBtn:hover {
+    background: #e9ecef;
+}
+
+/* .active {
+    background-color: #007bff !important;
+    color: white !important;
+    border-color: #007bff !important;
+} */
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* توسيط رسالة No tasks yet */
+.emptyWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.empty {
+    text-align: center;
+    font-weight: 600;
+    color: #888;
+    font-size: 1.2rem;
+    margin: 0;
+}

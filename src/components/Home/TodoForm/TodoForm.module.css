@@ -1,0 +1,65 @@
+/* src/components/TodoForm/TodoForm.module.css */
+.formContainer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.inputWrapper {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start; /* عشان الرسائل ما تخرب المحاذاة */
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.fieldGroup label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+}
+
+.fieldGroup input, .fieldGroup select {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.inputError {
+    border-color: #dc3545 !important;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.addBtn {
+    margin-top: 25px; /* لموازنة الزر مع صناديق الإدخال */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.addBtn:disabled {
+    background-color: #a0c4ff; /* أزرق باهت بدلاً من الرمادي الكئيب */
+    cursor: not-allowed;
+    opacity: 0.8; /* ليكون أوضح قليلاً */
+}
+
+
+

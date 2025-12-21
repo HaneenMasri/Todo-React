@@ -1,0 +1,38 @@
+/* src/components/Home/FilterBar/FilterBar.module.css */
+
+.filterSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filterLabel {
+    font-weight: 500;
+    color: #444;
+}
+
+.filterGroup {
+    display: flex;
+    gap: 8px;
+}
+
+.filterBtn {
+    padding: 6px 16px;
+    border: 1px solid #ddd;
+    background: #f1f3f5;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+    color: #555;
+}
+
+.filterBtn:hover {
+    background: #e9ecef;
+}
+
+.active {
+    background-color: #007bff !important;
+    color: white !important;
+    border-color: #007bff !important;
+}
