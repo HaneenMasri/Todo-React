@@ -1,65 +1,64 @@
-/* src/components/TodoForm/TodoForm.module.css */
-.formContainer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border: 1px solid #e9ecef;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.inputWrapper {
+.form {
     display: flex;
-    gap: 15px;
-    align-items: flex-start; /* عشان الرسائل ما تخرب المحاذاة */
+    align-items: flex-start;
+    gap: 20px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    margin-bottom: 30px;
 }
 
-.fieldGroup {
+.inputGroup {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
     flex: 1;
 }
 
-.fieldGroup label {
+.inputGroup label {
     font-weight: 600;
     font-size: 14px;
-    color: #444;
+    color: #495057;
 }
 
-.fieldGroup input, .fieldGroup select {
-    padding: 8px 12px;
+.inputField {
+    padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 16px;
+    outline: none;
 }
 
-.inputError {
-    border-color: #dc3545 !important;
+.inputField:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
-.errorMessage {
-    color: red;
+.errorInput {
+    border-color: #dc3545;
+}
+
+.errorText {
+    color: #dc3545;
     font-size: 12px;
-    margin-top: 5px;
-    display: block;
+    margin-top: 4px;
 }
 
 .addBtn {
-    margin-top: 25px; /* لموازنة الزر مع صناديق الإدخال */
+    align-self: flex-end; /* لجعله بمحاذاة الحقول */
+    padding: 10px 25px;
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 9px 20px;
     border-radius: 4px;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: bold;
+    transition: background 0.2s;
+    height: 42px; /* ليتناسب مع ارتفاع الحقول */
 }
 
 .addBtn:disabled {
-    background-color: #a0c4ff; /* أزرق باهت بدلاً من الرمادي الكئيب */
+    background-color: #b8daff;
     cursor: not-allowed;
-    opacity: 0.8; /* ليكون أوضح قليلاً */
 }
-
-
-

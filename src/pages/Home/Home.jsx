@@ -1,46 +1,33 @@
-import { useState ,useEffect} from 'react';
-// تصحيح المسارات لتطابق الهيكلية الجديدة في مجلد components/Home
+import { useState } from 'react';
 import TodoForm from '../../components/Home/TodoForm';
 import TodoItem from '../../components/Home/TodoItem';
 import FilterBar from '../../components/Home/FilterBar'; 
 import styles from './Home.module.css';
-import { initialMocks } from '../../mocks';
 
 const Home = () => { 
-  // 1. تعريف الـ State (ذاكرة المكون)
-const [tasks, setTasks] = useState(() => {
-  const savedTasks = localStorage.getItem('my_tasks');
-  // إذا كان الـ localStorage فارغاً، سيأخذ الـ initialMocks كقيمة افتراضية
-  return savedTasks ? JSON.parse(savedTasks) : initialMocks;
-});  const [filter, setFilter] = useState('All'); // حالة الفلتر الحالي
-useEffect(() => {
-  localStorage.setItem('my_tasks', JSON.stringify(tasks));
-}, [tasks]); // سيقوم بالحفظ تلقائياً عند إضافة أو حذف أي مهمة
-  // 2. وظيفة إضافة مهمة جديدة
-  const addTask = (task) => {
-    setTasks([...tasks, { 
-      ...task, 
-      id: Date.now(), // استخدام الوقت كمعرف فريد
+  const [tasks, setTasks] = useState([]); // يبدأ فارغاً بدون Mocks
+  const [filter, setFilter] = useState('All');
+
+  const addTask = (data) => {
+    const newTask = { 
+      id: Date.now(), 
+      taskName: data.taskName, 
+      priority: data.priority,
       completed: false 
-    }]);
+    };
+    setTasks([newTask, ...tasks]);
   };
 
-  // 3. وظيفة حذف مهمة
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(t => t.id !== id));
-  };
+  const deleteTask = (id) => setTasks(tasks.filter(t => t.id !== id));
 
-  // 4. تبديل حالة الإنجاز (Done/Undo)
   const toggleTask = (id) => {
     setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
   };
 
-  // 5. تعديل اسم المهمة (Inline Editing)
   const updateTaskName = (id, newName) => {
     setTasks(tasks.map(t => t.id === id ? { ...t, taskName: newName } : t));
   };
 
-  // 6. منطق الفلترة بناءً على الأولوية المختارة
   const filteredTasks = tasks.filter(t => 
     filter === 'All' ? true : t.priority === filter
   );
@@ -50,25 +37,14 @@ useEffect(() => {
       <div className={styles.todoBox}>
         <h1 className={styles.title}>To-Do List</h1>
         
-        {/* قسم الفورم */}
-        <div className={styles.section}>
-          <TodoForm onAdd={addTask} />
-        </div>
+        {/* المكونات الثلاثة الأساسية */}
+        <TodoForm onAdd={addTask} />
+        <FilterBar activeFilter={filter} onFilterChange={setFilter} />
 
-        {/* قسم الفلترة باستخدام المكون المنفصل FilterBar */}
-        <div className={styles.section}>
-          <FilterBar 
-            activeFilter={filter} 
-            onFilterChange={setFilter} 
-          />
-        </div>
-
-        {/* قسم عرض المهام */}
         <div className={styles.listSection}>
+          {/* شرط: إظهار رسالة No tasks yet إذا كانت القائمة فارغة */}
           {filteredTasks.length === 0 ? (
-            <div className={styles.emptyWrapper}>
-              <p className={styles.empty}>No tasks yet!</p>
-            </div>
+            <p className={styles.empty}>No tasks yet!</p>
           ) : (
             <div className={styles.list}>
               {filteredTasks.map(task => (

@@ -1,4 +1,5 @@
-//src/components/Home/FilterBar/FilterBar.module.css
+//src/components/Home/FilterBar/FilterBar.jsx
+
 import styles from './FilterBar.module.css';
 
 const FilterBar = ({ activeFilter, onFilterChange }) => {

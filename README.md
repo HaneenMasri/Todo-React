@@ -1,16 +1,85 @@
-# React + Vite
+# React Task: To-Do List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objective
+Build a simple React To-Do List app to practice:
 
-Currently, two official plugins are available:
+- `useState`
+- Dynamic rendering
+- Conditional rendering
+- Two-way binding
+- Form validation with React Hook Form
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features & Requirements
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Add To-Do Items**
+- Input fields for:
+  - Task Name (text)
+  - Task Priority (dropdown: High, Medium, Low)
+- Add Task button to submit a new task.
 
-## Expanding the ESLint configuration
+2. **Two-Way Binding**
+- Input fields connected to state using `useState`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. **Display Tasks Dynamically**
+- Render a list of tasks below the form.
+- Each task shows:
+  - Task name
+  - Priority
+  - A "Done" button
+
+4. **Conditional Rendering**
+- Show `'No tasks yet!'` if no tasks exist.
+- Strike-through task name if completed.
+- Filter tasks by selected priority (All / High / Medium / Low).
+
+5. **Priority Color Indicator**
+- High → Red
+- Medium → Yellow
+- Low → Green
+
+6. **Task Actions**
+- Delete task button
+- Inline editing of task name
+
+7. **Form Validation (React Hook Form)**
+- Task Name: English letters and spaces only, required
+- Priority: required
+- Submit button: disabled until all validations pass
+
+---
+
+## Components
+
+### `TodoForm`
+- Props: `onAdd(task)`
+- Form with validation using `react-hook-form`
+
+### `TodoItem`
+- Props: `task`, `onDelete(id)`, `onToggle(id)`, `onUpdate(id, taskName)`
+
+### `FilterBar`
+- Props: `activeFilter`, `onFilterChange(filter)`
+
+---
+
+## File Structure
+
+my-react-app/
+│
+├─ src/
+│ ├─ components/
+│ │ ├─ Home/
+│ │ │ ├─ FilterBar/
+│ │ │ ├─ TodoForm/
+│ │ │ └─ TodoItem/
+│ ├─ pages/
+│ │ └─ Home/
+│ ├─ App.jsx
+│ ├─ App.css
+│ └─ main.jsx
+├─ public/
+├─ node_modules/
+├─ package.json
+└─ .gitignore
