@@ -46,7 +46,7 @@
 }
 
 .addBtn {
-    align-self: flex-end; /* لجعله بمحاذاة الحقول */
+    align-self: flex-end; 
     padding: 10px 25px;
     background-color: #007bff;
     color: white;
@@ -55,7 +55,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s;
-    height: 42px; /* ليتناسب مع ارتفاع الحقول */
+    height: 42px; 
 }
 
 .addBtn:disabled {

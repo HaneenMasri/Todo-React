@@ -11,12 +11,11 @@ const TodoItem = ({ task, onDelete, onToggle, onUpdate }) => { //props
   return (
     <div className={styles.item} style={{ borderLeft: `6px solid ${borderColor[task.priority]}` }}>
       <div className={styles.content}>
-        {/* التعديل هنا: استخدام task.taskName بدلاً من task.name لظهور النص */}
         <input 
-          className={`${styles.taskInput} ${task.completed ? styles.completed : ''}`}//styles.completed:تشطب النص 
+          className={`${styles.taskInput} ${task.completed ? styles.completed : ''}`}
           value={task.taskName} 
           onChange={(e) => onUpdate(task.id, e.target.value)}
-          // spellCheck="false"
+          spellCheck="false"
         />
         <span className={styles.priorityLabel}>{task.priority} Priority</span>
       </div>

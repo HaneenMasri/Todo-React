@@ -6,10 +6,10 @@ const TodoForm = ({ onAdd }) => {
     const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
 mode: "onTouched",
     reValidateMode: "onChange",
-    // criteriaMode: "all",   
+    criteriaMode: "all",   
      });
-    //تُستدعى فقط إذا الفورم صحيح
-    const onSubmit = (data) => {
+//we call onsubmit when the form is valid only
+     const onSubmit = (data) => {
         onAdd(data); 
         reset(); 
     };
@@ -22,10 +22,10 @@ mode: "onTouched",
                     className={`${styles.inputField} ${errors.taskName ? styles.errorInput : ''}`}
                     placeholder="Enter task"
                     {...register("taskName", { 
-                        required: "Required", 
+                        required: "Required ,Type task name", 
                         pattern: {
                             value: /^[A-Za-z\s]+$/, 
-                            message: "English only"
+                            message: "English only, no numbers, special characters, Arabic letters allowed"
                         }
                     })}
                 />
@@ -34,7 +34,7 @@ mode: "onTouched",
 
             <div className={styles.inputGroup}>
                 <label>Priority:</label>
-                {/* إضافة الـ Validation هنا: required: true تمنع اختيار القيمة الفارغة */}
+
                 <select 
                     className={`${styles.inputField} ${errors.priority ? styles.errorInput : ''}`}
                     {...register("priority", { required: "Select priority" })}
@@ -50,7 +50,7 @@ mode: "onTouched",
             <button 
                 type="submit" 
                 className={styles.addBtn} 
-                disabled={!isValid} // الزر معطل (Disabled) حتى تكتمل كل الحقول
+                disabled={!isValid} 
             >
                 Add Task
             </button>

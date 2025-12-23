@@ -11,7 +11,7 @@ const FilterBar = ({ activeFilter, onFilterChange }) => {
         {priorities.map(p => (
           <button 
             key={p}
-            //عندما يكون الفلتر المختار هو نفسه الزر الحالي)، سيقوم React بإضافة الفئة styles.active إلى الزر.
+            
             className={`${styles.filterBtn} ${activeFilter === p ? styles.active : ''}`} 
             onClick={() => onFilterChange(p)}
           >
