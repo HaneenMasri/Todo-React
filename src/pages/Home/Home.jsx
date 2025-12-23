@@ -1,3 +1,4 @@
+// src/pages/Home/Home.jsx
 import { useState } from 'react';
 import TodoForm from '../../components/Home/TodoForm';
 import TodoItem from '../../components/Home/TodoItem';
@@ -5,10 +6,10 @@ import FilterBar from '../../components/Home/FilterBar';
 import styles from './Home.module.css';
 
 const Home = () => { 
-  const [tasks, setTasks] = useState([]); // يبدأ فارغاً بدون Mocks
+  const [tasks, setTasks] = useState([]); 
   const [filter, setFilter] = useState('All');
 
-  const addTask = (data) => {
+  const addTask = (data) => {//data is an object containing taskName and priority coming from TodoForm
     const newTask = { 
       id: Date.now(), 
       taskName: data.taskName, 
@@ -42,7 +43,7 @@ const Home = () => {
         <FilterBar activeFilter={filter} onFilterChange={setFilter} />
 
         <div className={styles.listSection}>
-          {/* شرط: إظهار رسالة No tasks yet إذا كانت القائمة فارغة */}
+
           {filteredTasks.length === 0 ? (
             <p className={styles.empty}>No tasks yet!</p>
           ) : (

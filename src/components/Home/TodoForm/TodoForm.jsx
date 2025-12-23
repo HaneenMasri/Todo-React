@@ -3,13 +3,12 @@ import { useForm } from 'react-hook-form';
 import styles from './TodoForm.module.css';
 
 const TodoForm = ({ onAdd }) => {
-    // نستخدم isValid للتأكد من أن جميع الشروط (الاسم والأولوية) قد تحققت
     const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
 mode: "onTouched",
     reValidateMode: "onChange",
     // criteriaMode: "all",   
      });
-
+    //تُستدعى فقط إذا الفورم صحيح
     const onSubmit = (data) => {
         onAdd(data); 
         reset(); 
