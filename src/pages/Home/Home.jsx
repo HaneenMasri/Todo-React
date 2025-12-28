@@ -12,7 +12,7 @@ const Home = () => {
   const addTask = (data) => {//data is an object containing taskName and priority coming from TodoForm
     const newTask = { 
       id: Date.now(), 
-      taskName: data.taskName, 
+      taskName: data.taskName, //from data object
       priority: data.priority,
       completed: false 
     };
@@ -38,7 +38,6 @@ const Home = () => {
       <div className={styles.todoBox}>
         <h1 className={styles.title}>To-Do List</h1>
         
-        {/* المكونات الثلاثة الأساسية */}
         <TodoForm onAdd={addTask} />
         <FilterBar activeFilter={filter} onFilterChange={setFilter} />
 

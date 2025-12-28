@@ -1,6 +1,6 @@
 import styles from './TodoItem.module.css';
 
-const TodoItem = ({ task, onDelete, onToggle, onUpdate }) => { //props
+const TodoItem = ({ task, onDelete, onToggle, onUpdate }) => { 
   
   const borderColor = {
     High: '#dc3545',  
@@ -17,7 +17,7 @@ const TodoItem = ({ task, onDelete, onToggle, onUpdate }) => { //props
           onChange={(e) => onUpdate(task.id, e.target.value)}
           spellCheck="false"
         />
-        <span className={styles.priorityLabel}>{task.priority} Priority</span>
+        <div className={styles.priorityLabel}>{task.priority} Priority</div>
       </div>
 
       <div className={styles.actions}>

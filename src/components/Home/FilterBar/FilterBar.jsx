@@ -3,6 +3,7 @@
 import styles from './FilterBar.module.css';
 
 const priorities = ['All', 'High', 'Medium', 'Low'];
+
 const FilterBar = ({ activeFilter, onFilterChange }) => {
   return (
     <div className={styles.filterSection}>
@@ -13,7 +14,7 @@ const FilterBar = ({ activeFilter, onFilterChange }) => {
             key={p}
             
             className={`${styles.filterBtn} ${activeFilter === p ? styles.active : ''}`} 
-            onClick={() => onFilterChange(p)}
+            onClick={() => onFilterChange(p)}//لما نضغط على الزر بنستدعي setfilter(p)
           >
             {p}
           </button>

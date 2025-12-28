@@ -1,15 +1,30 @@
-// src/components/Home/TodoForm/TodoForm.jsx
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup'; 
+import * as Yup from 'yup';
 import styles from './TodoForm.module.css';
 
 const TodoForm = ({ onAdd }) => {
+    
+    const schema = Yup.object().shape({
+        taskName: Yup.string()
+            .required("Required, Type task name")
+            .matches(/^[A-Za-z\s]+$/, "English only, no numbers or special characters"),
+        priority: Yup.string()
+            .required("Select priority")
+    });
+
     const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
-mode: "onTouched",
-    reValidateMode: "onChange",
-    criteriaMode: "all",   
-     });
-//we call onsubmit when the form is valid only
-     const onSubmit = (data) => {
+    // التغيير هنا: "all" تعني أنه سيفحص عند اللمس (Blur) وعند الكتابة (Change)
+    mode: "all", 
+    resolver: yupResolver(schema),
+    // هذا يضمن أن القيم تعود لحالتها الأصلية تماماً بعد الإضافة
+    defaultValues: {
+        taskName: "",
+        priority: ""
+    }
+});
+
+    const onSubmit = (data) => {
         onAdd(data); 
         reset(); 
     };
@@ -21,30 +36,23 @@ mode: "onTouched",
                 <input
                     className={`${styles.inputField} ${errors.taskName ? styles.errorInput : ''}`}
                     placeholder="Enter task"
-                    {...register("taskName", { 
-                        required: "Required ,Type task name", 
-                        pattern: {
-                            value: /^[A-Za-z\s]+$/, 
-                            message: "English only, no numbers, special characters, Arabic letters allowed"
-                        }
-                    })}
+                    {...register("taskName")} 
                 />
                 {errors.taskName && <span className={styles.errorText}>{errors.taskName.message}</span>}
             </div>
 
             <div className={styles.inputGroup}>
                 <label>Priority:</label>
-
                 <select 
                     className={`${styles.inputField} ${errors.priority ? styles.errorInput : ''}`}
-                    {...register("priority", { required: "Select priority" })}
+                    {...register("priority")} 
                 >
                     <option value="">Select...</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
-                {errors.priority && <span className={styles.errorText}>Required</span>}
+                {errors.priority && <span className={styles.errorText}>{errors.priority.message}</span>}
             </div>
 
             <button 
