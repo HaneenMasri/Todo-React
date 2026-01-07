@@ -13,8 +13,8 @@ const FilterBar = ({ activeFilter, onFilterChange }) => {
           <button 
             key={p}
             
-            className={`${styles.filterBtn} ${activeFilter === p ? styles.active : ''}`} 
-            onClick={() => onFilterChange(p)}//لما نضغط على الزر بنستدعي setfilter(p)
+            className={`${styles.filterBtn} ${activeFilter === p && styles.active}`} 
+            onClick={() => onFilterChange(p)}
           >
             {p}
           </button>

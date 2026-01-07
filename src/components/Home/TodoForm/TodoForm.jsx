@@ -14,10 +14,8 @@ const TodoForm = ({ onAdd }) => {
     });
 
     const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
-    // التغيير هنا: "all" تعني أنه سيفحص عند اللمس (Blur) وعند الكتابة (Change)
     mode: "all", 
     resolver: yupResolver(schema),
-    // هذا يضمن أن القيم تعود لحالتها الأصلية تماماً بعد الإضافة
     defaultValues: {
         taskName: "",
         priority: ""
@@ -34,7 +32,7 @@ const TodoForm = ({ onAdd }) => {
             <div className={styles.inputGroup}>
                 <label>Task Name:</label>
                 <input
-                    className={`${styles.inputField} ${errors.taskName ? styles.errorInput : ''}`}
+                    className={`${styles.inputField} ${errors.taskName && styles.errorInput }`}
                     placeholder="Enter task"
                     {...register("taskName")} 
                 />
@@ -44,7 +42,7 @@ const TodoForm = ({ onAdd }) => {
             <div className={styles.inputGroup}>
                 <label>Priority:</label>
                 <select 
-                    className={`${styles.inputField} ${errors.priority ? styles.errorInput : ''}`}
+                    className={`${styles.inputField} ${errors.priority && styles.errorInput }`}
                     {...register("priority")} 
                 >
                     <option value="">Select...</option>

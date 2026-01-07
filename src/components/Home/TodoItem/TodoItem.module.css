@@ -5,9 +5,22 @@
     padding: 15px 20px;
     background: white;
     border: 1px solid #dee2e6;
-    border-radius: 4px;
+    border-radius: 8px;
     margin-bottom: 12px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 6px solid transparent;
+    padding: 12px;}
+
+.high {
+  border-left-color: #dc3545;
+}
+
+.medium {
+  border-left-color: #ffc107;
+}
+
+.low {
+  border-left-color: #28a745;
 }
 
 .content {
